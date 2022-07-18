@@ -11,6 +11,8 @@ $telefono = $_POST['telefono'];
 $correo = $_POST['correo'];
 $id = $_POST['id'];
 
+echo "<script> alert('El estado de la encomienda a cambiado');window.location.replace(document.referrer);
+						</script>";
 
 if (buscaRepetido($correo, $numdocumento, $telefono, $id, $conexion) == 1) {
     echo 2;

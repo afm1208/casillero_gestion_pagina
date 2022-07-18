@@ -31,7 +31,6 @@ require_once "../../php/sesion-admin.php";
 						<tr>
 							<th style="width: 16%"> ID</th>
 							<th style="width: 16%">Nombre</th>
-							<th style="width:  12%">Estado</th>
 							<th style="width:  12%">Fecha Reserva</th>
 							<th style="width:  12%">Fecha Entrega</th>
 							<th style="width: 12%">Fecha Retirado</th>
@@ -48,7 +47,6 @@ require_once "../../php/sesion-admin.php";
 						<tr>
 							<td><?php echo $mostrar['Id'] ?></td>
 							<td><?php echo $mostrar['nombre_cliente'] ?></td>
-							<td><?php echo $mostrar['estado_locker'] ?></td>
 							<td><?php echo $mostrar['fecha_reserva'] ?></td>
 							<td><?php echo $mostrar['codigo_entrega'] ?></td>
 							<td><?php echo $mostrar['fecha_entregado'] ?></td>

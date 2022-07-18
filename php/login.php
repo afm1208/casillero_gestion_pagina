@@ -12,6 +12,7 @@ $contrasena = $_POST['contrasena'];
 $sql = "SELECT * from registro_usuarios where correo='$correo' and contrasena='$contrasena'";
 $result = mysqli_query($conexion, $sql);
 
+
 $filas = mysqli_fetch_array($result);
 
 if ($filas['idRol'] == 1) { //administrador
@@ -28,5 +29,7 @@ if ($filas['idRol'] == 2) { //usuario
  else {
 	echo 0;
 }
+
+
 mysqli_free_result($result);
 mysqli_close($conexion);

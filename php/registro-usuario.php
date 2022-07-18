@@ -20,10 +20,11 @@ $conexion = conexion();
 
 
  	$sql = "INSERT into registro_usuarios (nombre,documento,numdocumento,telefono,correo,contrasena,ccontrasena,locker_registrado,idRol,tyc)
-				values ('$nombre','$documento','$numdocumento','$telefono','$correo','$contrasena','$ccontrasena','$locker_registrado','$idRol','$tyc')";
+				values ('$nombre','$documento','$numdocumento','$telefono','$correo','$numdocumento','$numdocumento','$locker_registrado','$idRol','$tyc')";
 	 $result = mysqli_query($conexion, $sql);
 
-
+	 echo "<script> alert('USUARIO CREADO EXITOSAMENTE! YA PUEDES CREAR UNA ENCOMIENDA ');window.location.replace(document.referrer);
+	 </script>";
 
 
 function buscaRepetido($cor, $numd, $tel, $conexion)
@@ -40,9 +41,6 @@ function buscaRepetido($cor, $numd, $tel, $conexion)
 
 $activo = true;
 $randomnumber = rand (1000,9999); 
-
-echo "<script> alert('EL USUARIO A SIDO CREADO EXITOSAMENTE!');window.location.replace(document.referrer);
-						</script>";
 
 function enviar_correo_confirm ($cor,$conexion,$nombre, $code){
 	$to = $cor ;

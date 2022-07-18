@@ -184,8 +184,10 @@
 
                                            <div class="input-group">
                                                <span class="input-group-text">Tamaño y taquila</span>
-                                               <input type="text" aria-label="First name" class="form-control"  id="tamano-slot">
-                                               <input type="text" aria-label="Last name" class="form-control" id="taquilla-id" name="taquilla-id">
+                                               <input type="text" aria-label="First name" class="form-control"
+                                                   id="tamano-slot">
+                                               <input type="text" aria-label="Last name" class="form-control"
+                                                   id="taquilla-id" name="taquilla-id">
                                            </div>
                                        </div>
                                    </form>
@@ -211,9 +213,11 @@
                                                <?php foreach ($ejecutar as $opciones) : ?>
                                                <option value="<?php echo $opciones['nombre'] ?>">
                                                    <?php echo $opciones['nombre'] ?>
-                                                   <?php echo $opciones['numdocumento']?></option>
-
+                                                   <?php echo $opciones['numdocumento']?>
+                                               </option>
                                                <?php endforeach ?>
+
+
                                            </select>
 
                                        </div>
@@ -234,7 +238,7 @@
                                    <div class="collapse" id="form-new-user">
                                        <div class="card card-body">
                                            <form name="formulario-new-user-encomienda" method="POST"
-                                               action="../../php/registro.php">
+                                               action="../../php/registro-usuario.php">
                                                <div class="mb-3">
                                                    <label for="name-new-user" class="form-label">Nombre y
                                                        apeliido</label>
@@ -264,13 +268,13 @@
                                                    </div>
                                                </div>
 
-                                               <input type="hidden" id="documento" name="documento" value="CC">
-                                               <input type="hidden" id="contrasena" name="contrasena" value="#numdocumento">
-                                               <input type="hidden" id="ccontrasena" name="ccontrasena" value="#numdocumento">
+                                               <input type="hidden" id="documento" name="documento" value="Cedula">
+                                               <input type="hidden" id="contrasena" name="contrasena" value="000000">
+                                               <input type="hidden" id="ccontrasena" name="ccontrasena" value="000000">
                                                <input type="hidden" id="locker_registrado" name="locker_registrado"
-                                                   value="<?$mostrar['ID']?>">
+                                                   value="27">
                                                <input type="hidden" id="idRol" name="idRol" value="2">
-                                               <input type="hidden" id="" name="idRol" value="si">
+
 
 
                                                <input type="submit" class="btn btn-primary" value="Crear Usuario"
@@ -300,7 +304,9 @@
 
                                    <input type="hidden" name="f_reserva" value="<?$fecha?>">
 
+                                   <input type="hidden" name="correo" value="<?$mostrar['correo']?>">
 
+                                   <input type="hidden" name="estado" value="ROPA RECIBIDA">
 
                                    <div class="col-lg-12 col-sm-6 col-12 text-center">
 

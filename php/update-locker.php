@@ -18,8 +18,12 @@ $tipo = $_POST['uptipo'];
 $codigo = $_POST['upcodigo'];
 $creado = $_POST['upcreado'];
 $actualizado = $_POST['upactualizado'];
-$id = $_POST['id'];
+$id = $_GET['id'];
 
+
+
+echo "<script> alert('Locker actualizado');window.location.replace(document.referrer);
+						</script>";
 if (buscaRepetido($locker, $id, $conexion) == 1) {
     echo 2;
 } else {

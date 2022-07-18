@@ -22,7 +22,12 @@ require_once "../../php/sesion-admin.php";
 	require_once "../../template/menu.php";
 	?>
 
+	<div class="btn btn blue" style="width:100%">
 
+	<button type="button" class="btn btn-warning" style="height:10%; width:30%; " >Hoy</button>
+	<button type="button" class="btn btn-info"   style="height:10%; width:30%; ">Ayer</button>
+
+	</div>
 	<div class="mt-5 px-lg-2 px-sm-1">
 		<div class="row m-0">
 			<div class="col-lg-12">
@@ -47,8 +52,9 @@ require_once "../../php/sesion-admin.php";
 
 					<?php require_once "../../php/mostrar-tabla.php";
 				 	    $ID_locker = $_GET['ID']; 
-						$sql_listar_user_encomienda = "SELECT encomiendas.Id , encomiendas.nombre_cliente, registro_usuarios.numdocumento , detalles_locker.estado_locker,encomiendas.fecha_reserva, encomiendas.fecha_entregado, encomiendas.fecha_retirado, encomiendas.nombre_locker, encomiendas.taquilla, encomiendas.codigo_entrega , encomiendas.codigo_clean , encomiendas.observacion FROM encomiendas INNER JOIN registro_usuarios ON encomiendas.nombre_cliente = registro_usuarios.nombre INNER JOIN detalles_locker ON encomiendas.nombre_locker = detalles_locker.nombre_locker WHERE detalles_locker.Id_Locker = $ID_locker GROUP BY Id ORDER BY fecha_reserva DESC";
-					$result = mysqli_query($conexion,$sql_listar_user_encomienda);
+						$sql_listar_user_encomienda = "SELECT encomiendas.Id , encomiendas.nombre_cliente, registro_usuarios.numdocumento , detalles_locker.estado_locker,encomiendas.fecha_reserva, encomiendas.fecha_entregado, encomiendas.fecha_retirado, encomiendas.nombre_locker, encomiendas.taquilla, encomiendas.codigo_entrega , encomiendas.codigo_clean , encomiendas.observacion FROM encomiendas INNER JOIN registro_usuarios ON encomiendas.nombre_cliente = registro_usuarios.nombre INNER JOIN detalles_locker ON encomiendas.nombre_locker = detalles_locker.nombre_locker WHERE detalles_locker.Id_Locker = $ID_locker   GROUP BY Id ORDER BY fecha_reserva DESC";
+					    $result = mysqli_query($conexion,$sql_listar_user_encomienda);
+
 					while ($mostrar = mysqli_fetch_array($result)) {
 					?>
 						<tr>

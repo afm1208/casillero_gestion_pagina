@@ -13,7 +13,7 @@ if ($_SESSION["idRol"] == 1) { ?>
             <li><a href="" data-bs-toggle="modal" data-bs-target="#createlocker"><i class="bi bi-plus-circle-fill fs-4"></i></a></li>
             <li><a href="users-registered.php"><i class="bi bi-people-fill fs-4"></i></a></li>
             <li><a href="report-lockers.php"><i class="bi bi-file-earmark-bar-graph-fill fs-4"></i></a></li>
-            <li><a href="#"><i class="bi bi-bookmark-x-fill fs-4"></i></a></li>
+            <li><a href="gestion-entrega.php"><i class="bi bi-minecart  fs-4"></i></a></li>
             <li id="id"><a href="#">ID: <?php echo utf8_decode($row['numdocumento']); ?></a></li>
         </ul>
     </nav>
@@ -126,8 +126,7 @@ if ($_SESSION["idRol"] == 1) { ?>
     <!-- Crear Locker -->
 
     <?php
-} else {
-    if ($_SESSION["idRol"] == 2) { ?>
+} else  if ($_SESSION["idRol"] == 2) { ?>
 
         <nav class="navbar-blue" style="background-color: green;">
             <ul>
@@ -139,7 +138,15 @@ if ($_SESSION["idRol"] == 1) { ?>
 
 
 <?php
-    }
-}
+   } else  if ($_SESSION["idRol"] == 3) { ?>
 
+        <nav class="navbar-blue" style="background-color: green;">
+            <ul>
+                <li><label for="btn-menu"><i class="bi bi-list fs-4"></i></label></li>
+                <li><a href="index-user.php"><i class="bi bi-house-door-fill fs-4"></i></a></li>
+                <li id="id"><a href="https://wa.me/3126948305?text=Hola%20solicito%20ayuda">ID: <?php echo utf8_decode($row['numdocumento']); ?></a></li>
+            </ul>
+        </nav>
+        <?php
+   }
 ?>

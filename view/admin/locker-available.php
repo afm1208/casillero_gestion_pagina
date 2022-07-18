@@ -186,8 +186,6 @@ require_once "../../php/locker-view.php";
 
 				document.getElementById('taquilla-id').value = tamanogrande[opcion1][1];
 
-
-
 			}
 
 			function cambioOpciones2()

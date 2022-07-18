@@ -38,7 +38,7 @@ require_once "../../php/sesion-admin.php";
 							<th style="width: 8%">Actualizado</th>
 							<th style="width: 10%">Información</th>
 							<th style="width: 5%">Tipo</th>
-							<th style="width: 20%">Acciones</th>
+							<th style="width: 30%">Acciones</th>
 						</tr>
 					</thead>
 
@@ -49,7 +49,7 @@ require_once "../../php/sesion-admin.php";
 						<tr>
 							<td><?php echo $mostrar['compania'] ?></td>
 							<td><?php echo $mostrar['locker'] ?></td>
-							<td><?php echo $mostrar['bateria'] ?></td>
+							<td><?php echo $mostrar['Id'] ?></td>
 							<td><?php echo $mostrar['estado'] ?></td>
 							<td><?php echo $mostrar['conectado'] ?></td>
 							<td><?php echo $mostrar['vfirmware'] ?></td>
@@ -58,6 +58,7 @@ require_once "../../php/sesion-admin.php";
 							<td><?php echo $mostrar['actualizado'] ?></td>
 							<td><?php echo $mostrar['informacion'] ?></td>
 							<td><?php echo $mostrar['tipo'] ?></td>
+
 							<td><a href="locker-available.php?ID=<?php echo $mostrar['Id']; ?>"><i class="bi bi-eye-fill fs-5 px-2" style="color: #F8AE22"></i></a>
 								<a href="#" data-bs-toggle="modal" data-bs-target="#editlocker<?php echo $mostrar['Id']; ?>"><i class="bi bi-pencil-fill fs-5 px-2" style="color: #05A1D3"></i></a>
 								<a href="#" data-bs-toggle="modal" data-bs-target="#deletelocker<?php echo $mostrar['Id']; ?>"><i class="bi bi-trash-fill fs-5 px-2" style="color: #da1111"></i></a>

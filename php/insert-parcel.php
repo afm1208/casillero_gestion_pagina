@@ -2,7 +2,8 @@
 require_once "conexion.php";
 $conexion = conexion();
 
-$correo = 
+$correo = $opciones['correo'];
+$estado = $_POST['estado'];
 $tamano = $_POST['tamanoslot'];
 $cliente = $_POST['nombre-cliente'];
 $info = $_POST['info'];
@@ -15,8 +16,8 @@ $codigo_clean= rand(111111,999999);
 
 
  // creamos la funcion para generar un token 
-$sql = "INSERT into	encomiendas (nombre_cliente,nombre_locker,taquilla,fecha_reserva,fecha_entregado,fecha_retirado,fecha_cancelado,observacion,codigo_entrega,codigo_clean)
-values ('$cliente','$locker','$taquillaid','$creado','$creado','$creado','$creado','$info','$codigo_entregable','$codigo_clean')";
+$sql = "INSERT into	encomiendas (nombre_cliente,nombre_locker,taquilla,fecha_reserva,fecha_entregado,fecha_retirado,fecha_cancelado,observacion,codigo_entrega,codigo_clean,estado)
+values ('$cliente','$locker','$taquillaid','$creado','$creado','$creado','$creado','$info','$codigo_entregable','$codigo_clean','$estado')";
  $result = mysqli_query($conexion, $sql);
  echo  + $codigo_clean;
 
@@ -40,10 +41,10 @@ values ('$cliente','$locker','$taquillaid','$creado','$creado','$creado','$cread
  $mail->Password   = "correobases4159";
  
  $mail->IsHTML(true);
- $mail->AddAddress("alejandroafm1208@gmail.com", "ventas BYS");
- $mail->SetFrom("basesysoportestv@gmail.com", $_POST['contact-name']);
- $mail->AddReplyTo($_POST['contact-email'],$_POST['contact-name']);
- $mail->Subject = 'Enviado por '.$_POST['contact-name'];
+ $mail->AddAddress( "alejandroafm1208@gmail.com", "ventas BYS");
+ $mail->SetFrom("basesysoportestv@gmail.com", $_POST['nombre-cliente']);
+ $mail->AddReplyTo($_POST['contact-email'],$_POST['nombre-cliente']);
+ $mail->Subject = 'Enviado por '.$_POST['nombre-cliente'];
  $content = ' <font size="4px">Correo enviado desde el formulario de <font color="#e31515"> correo electronico.</font></font>
      <br>
      <font size="4px"><b>Nombre:</b></font> <font size="4px">'.$_POST['nombre-cliente'].'</font>
@@ -61,6 +62,11 @@ values ('$cliente','$locker','$taquillaid','$creado','$creado','$creado','$cread
  } else {
    echo "<meta http-equiv=\"refresh\" content=\"0;URL=Agradecimiento.html\">";
  }
+
+ 
+ echo "<script> alert('ENCOMIENDA CREADA EXITOSAMENTE!');window.location.replace(document.referrer);
+						</script>";
+
  
  ?>
 
