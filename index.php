@@ -15,7 +15,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="img-principal text-center">
-					<img src="resources/img/logo-casilleros-large.png" alt="logo casilleros inteligentes" title="logo casilleros inteligentes">
+					<img src="resources/img/logo-casilleros-large.png" alt="logo casilleros inteligentes" title="logo casilleros inteligentes" >
 				</div>
 				<form id="formlogin" class="form" action="" method="POST">
 					<div class="form-sesion">

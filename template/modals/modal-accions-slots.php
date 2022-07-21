@@ -200,7 +200,7 @@
                                    <div class="container">
                                        <div class="row-fluid">
 
-                                           <select class="selectpicker" data-show-subtext="true" data-live-search="true"
+                                           <select class="selectpicker"  data-show-subtext="true" data-live-search="true"
                                                name="nombre-cliente" id="nombre-cliente" onchange="changeStatus()"
                                                required>
 
@@ -211,7 +211,8 @@
 
                                                <option value="Ninguno"></option>
                                                <?php foreach ($ejecutar as $opciones) : ?>
-                                               <option value="<?php echo $opciones['nombre'] ?>">
+                                               <option
+                                                   value="<?php echo $opciones['nombre'] ?>&<?php echo $opciones['correo'] ?>">
                                                    <?php echo $opciones['nombre'] ?>
                                                    <?php echo $opciones['numdocumento']?>
                                                </option>
@@ -283,6 +284,23 @@
                                            </form>
                                        </div>
                                    </div>
+                                
+                                   <div class="form-check">
+                                       <input class="form-check-input" type="radio" name="pago"
+                                           id="pago_realizado" value="pago realizado">
+                                       <label class="form-check-label" for="flexRadioDefault1">
+                                           Pago realizado
+                                       </label>
+                                   </div>
+                                   <div class="form-check">
+                                       <input class="form-check-input" type="radio" name="pago"
+                                           id="pago_pendiente" value="pago">
+                                       <label class="form-check-label" for="flexRadioDefault2">
+                                           Pago pendiente
+                                       </label>
+                                   </div>
+
+
 
                                    <label class="mb-2 mt-4">Información Adicional</label>
 

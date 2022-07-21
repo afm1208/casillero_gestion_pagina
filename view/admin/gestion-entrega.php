@@ -30,6 +30,7 @@ require_once "../../php/sesion-admin.php";
                         <tr>
                             <th style="width: 5%">ID</th>
                             <th style="width: 5%">Estado</th>
+                            <th style="width: 10%">Pago</th>
                             <th style="width: 10%">Nombre </th>
                             <th style="width:  12%">Documento</th>
                             <th style="width: 12%">locker</th>
@@ -48,6 +49,7 @@ require_once "../../php/sesion-admin.php";
                     <tr>
                         <td><?php echo $mostrar['Id'] ?></td>
                         <td><?php echo $mostrar['estado'] ?></td>
+                        <td><?php echo $mostrar['pago'] ?></td>
                         <td><?php echo $mostrar['nombre'] ?></td>
                         <td><?php echo $mostrar['numdocumento'] ?></td>
                         <td><?php echo $mostrar['fecha_entregado'] ?></td>
@@ -71,7 +73,7 @@ require_once "../../php/sesion-admin.php";
                                         style="color: #05A1D3"></i></a>
                                 <a href="../../php/cambiar-estado.php?Id3=<?php echo $mostrar['Id']?>&correo2=<?php echo $mostrar['correo']?>" id="estado_3" name="estado_3"> <i class="bi bi-check2-square fs-5 px-2"
                                         style="color: #da1111"></i></a>
-                                <a href="../../php/cambiar-estado.php?Id4=<?php echo $mostrar['Id']?>&correo3=<?php echo $mostrar['correo']?>" id="estado_4" name="estado_4"><i class="bi bi-check-square-fill fs-5 px-2"
+                                <a href="../../php/cambiar-estado.php?Id4=<?php echo $mostrar['Id']?>&correo3=<?php echo $mostrar['correo']?>&codigo_user=<?php echo $mostrar['codigo_entrega']?>" id="estado_4" name="estado_4"><i class="bi bi-check-square-fill fs-5 px-2"
                                         style="color: green;"></i></a>
 
                             </form>

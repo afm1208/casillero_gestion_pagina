@@ -1,56 +1,4 @@
-<?php
-require_once "conexion.php";
-$conexion = conexion();
-
-$pago = $_POST['pago'];
-$estado = $_POST['estado'];
-$tamano = $_POST['tamanoslot'];
-$cliente = $_POST['nombre-cliente'];
-$info = $_POST['info'];
-$locker = $_POST['nombre-locker']; 
-$creado = $_POST['creado'];
-$reserva = $_POST['f_reserva'];
-$taquillaid = $_POST['taquilla-id'];
-$codigo_entregable = $_POST['codigo_prueba'];
-$codigo_clean= rand(111111,999999);
-$llego = $_POST['nombre-cliente'];
-$porciones = explode("&", $llego);
-$nombre=$porciones[0];// nombre
-$correo=$porciones[1];// correo
-
-
- // creamos la funcion para generar un token 
-$sql = "INSERT into	encomiendas (nombre_cliente,nombre_locker,taquilla,fecha_reserva,fecha_entregado,fecha_retirado,fecha_cancelado,observacion,codigo_entrega,codigo_clean,estado,pago)
-values ('$cliente','$locker','$taquillaid','$creado','$creado','$creado','$creado','$info','$codigo_entregable','$codigo_clean','$estado','$pago')";
- $result = mysqli_query($conexion, $sql);
- echo  + $codigo_clean;
-
-
- use PHPMailer\PHPMailer\PHPMailer;
- use PHPMailer\PHPMailer\Exception;
- require '../SMTP/PHPMailer/Exception.php';
- require '../SMTP/PHPMailer/PHPMailer.php';
- require '../SMTP/PHPMailer/SMTP.php';
- 
- $mail = new PHPMailer();
- $mail->IsSMTP();
- $mail->Mailer = "smtp";
- 
- $mail->SMTPDebug  = 0;  
- $mail->SMTPAuth   = TRUE;
- $mail->SMTPSecure = "tls";
- $mail->Port       = 587;
- $mail->Host       = "smtp.gmail.com";
- $mail->Username   = "info@casillerosinteligentes.com";
- $mail->Password   = "Casille123+";
- 
- $mail->IsHTML(true);
- $mail->AddAddress( $correo, "ventas BYS");
- $mail->SetFrom("reservas@casillerosinteligentes.com", 'Reservas');
- $mail->AddReplyTo($correo,'Lavanderia');
- $mail->Subject = 'Taquilla Reservada 🧦👘[Deposita tu ROPA en el Casillero]';
- $content = '
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -69,7 +17,7 @@ values ('$cliente','$locker','$taquillaid','$creado','$creado','$creado','$cread
         }
     </style>
     <table style="background: #ffffff;
-         font-family:san-serif;margin:0;max-width:100%;padding:0;width:-webkit-fill-available;
+         font-family:'Helvetica','Arial',san-serif;margin:0;max-width:100%;padding:0;width:-webkit-fill-available;
          width:-moz-available;position: relative;border-spacing: 0px;border-collapse: inherit;">
         <tbody>
             <tr>
@@ -93,9 +41,12 @@ values ('$cliente','$locker','$taquillaid','$creado','$creado','$creado','$cread
                         <div style="background:#ffffff;border-radius:8px;margin:0px 15px;max-width:100%;width:600px;">
                             <div class="texto 1" style="background-color: rgb(255, 255, 255); width: 100%;">
                                 <p><b style="font-size: 25px;"><b
-                                            style="background-color: #F8AE22; border-radius: 5px; font-size: 40px; padding: 5px;">¡Haz reservado una taquilla!</b>
+                                            style="background-color: #F8AE22; border-radius: 5px; font-size: 40px; padding: 5px;">¡Sin
+                                            compromisos!</b>
                                         <br>
-                                       
+                                        <p style="font-size: 25px;">¡Sin
+                                            gastar
+                                            un solo peso!</p>
                                     </b></p>
 
 
@@ -124,10 +75,10 @@ values ('$cliente','$locker','$taquillaid','$creado','$creado','$creado','$cread
                                                             <label id="mensaje" style="font-size: 25px;">
                                                                 <div style="background-color: #FAFAFA; padding: 20px ;
                                                                     border-radius: 10px;">
-                                                                    <p>Hola  :'.$nombre.' </p>
+                                                                    <p>Hola  : </p>
                                                                     <p>¡Tu taquilla esta disponible!</p>
                                                                     <p>Utiliza el siguiente codigo</p>            
-                                                                    <p><b>'.$_POST['codigo_prueba'].'</b> </p>
+                                                                    <p><b>CODIGO</b> </p>
                                                                     <p>Deposita tu ropa en el locker </p> 
                                                                     <p><b>Nosotros nos encargamos</b> </p>  
                                                                 </div>
@@ -137,7 +88,7 @@ values ('$cliente','$locker','$taquillaid','$creado','$creado','$creado','$cread
                                                                     <p style="text-align: center; font-size: 35px;  ">
                                                                         <b style="background-color: #FFC221;
                                                                             border-radius: 5px; font-size: 35px;
-                                                                            padding: 5px;">!Codigo valido por 30 mins!</b></p>
+                                                                            padding: 5px;">Codigo valido por 30 mins</b></p>
                                                                     <p></p>
                                                                 </div>
 
@@ -229,27 +180,3 @@ values ('$cliente','$locker','$taquillaid','$creado','$creado','$creado','$cread
 </body>
 
 </html>
- ';
- 
- $mail->MsgHTML($content); 
- if(!$mail->Send()) { 
-  echo "<meta http-equiv=\"refresh\" content=\"0;URL=Algo-salio-mal.html\">";
-   var_dump($mail);
- } else {
-   echo "<meta http-equiv=\"refresh\" content=\"0;URL=Agradecimiento.html\">";
- }
-
- 
- echo "<script> alert('ENCOMIENDA CREADA EXITOSAMENTE!');window.location.replace(document.referrer);
-						</script>";
-
- 
- ?>
-
-
-
-
-
-// $sql = "UPDATE detalles_locker set estado_locker = '$reserva' WHERE  Id_Locker = '$Id' and num_taquilla = '$taquillaid' and tamano_locker = '$tamano' ";
-// echo $result = mysqli_query($conexion, $sql);
-  
