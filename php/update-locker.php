@@ -22,11 +22,13 @@ $id = $_GET['id'];
 
 
 
-echo "<script> alert('Locker actualizado');window.location.replace(document.referrer);
-						</script>";
+
 if (buscaRepetido($locker, $id, $conexion) == 1) {
     echo 2;
 } else {
+
+echo "<script> alert('Locker actualizado');window.location.replace(document.referrer);
+						</script>";
     $sql = "UPDATE casilleros SET compania = '$compania', locker = '$locker', agencia = '$agencia', vfirmware = '$vfirmware', vapp = '$vapp', informacion = '$informacion', localizacion = '$localizacion', slots = '$slotsmas', conectado = '$conectado', tipo = '$tipo', codigo = '$codigo', creado = '$creado', actualizado = '$actualizado' WHERE Id='$id'";
     echo $result = mysqli_query($conexion, $sql);
     for ($i = $slots + 1; $i <= $slotsmas; $i++) {

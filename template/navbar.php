@@ -14,6 +14,7 @@ if ($_SESSION["idRol"] == 1) { ?>
             <li><a href="users-registered.php"><i class="bi bi-people-fill fs-4"></i></a></li>
             <li><a href="report-lockers.php"><i class="bi bi-file-earmark-bar-graph-fill fs-4"></i></a></li>
             <li><a href="gestion-entrega.php"><i class="bi bi-minecart  fs-4"></i></a></li>
+            <li><a href="lavanderia-puntos.php"><i class="bi bi-gift-fill fs-4"></i></a></li>
             <li id="id"><a href="#">ID: <?php echo utf8_decode($row['numdocumento']); ?></a></li>
         </ul>
     </nav>
@@ -132,7 +133,8 @@ if ($_SESSION["idRol"] == 1) { ?>
             <ul>
                 <li><label for="btn-menu"><i class="bi bi-list fs-4"></i></label></li>
                 <li><a href="index-user.php"><i class="bi bi-house-door-fill fs-4"></i></a></li>
-                <li id="id"><a href="https://wa.me/3126948305?text=Hola%20solicito%20ayuda">ID: <?php echo utf8_decode($row['numdocumento']); ?></a></li>
+                <li><a href="cupon-encomiendas.php"><i class="bi bi-gift-fill fs-4"></i></a></li>
+                <li id="id"><a href="">ID: <?php echo utf8_decode($row['numdocumento']); ?></a></li>
             </ul>
         </nav>
 

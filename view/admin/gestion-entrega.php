@@ -14,30 +14,38 @@ require_once "../../php/sesion-admin.php";
 
 </head>
 
-<body>
+<body style="background-color: beige;">
 
     <?php require_once "../../template/navbar.php";
 	require_once "../../template/menu.php";
 	?>
 
 
-    <div class="mt-5 px-lg-2 px-sm-1">
+<center>
+        <div class="text-warning" style="margin: 20px;background-color:green;width: 50%; ">
+            <h1 class="display-4" style="color: beige;">Gestion Entrega</h1>
+        </div>
+
+    </center>
+
+
+    <div class="mt-5 px-lg-2 px-sm-1" >
         <div class="row m-0">
             <div class="col-lg-12">
                 <table id="indexadmin" class="table table-hover table-locker" cellspacing="0" width="100%">
 
                     <thead>
                         <tr>
-                            <th style="width: 5%">ID</th>
-                            <th style="width: 5%">Estado</th>
-                            <th style="width: 10%">Pago</th>
-                            <th style="width: 10%">Nombre </th>
-                            <th style="width:  12%">Documento</th>
-                            <th style="width: 12%">locker</th>
-                            <th style="width:  5%">Taquilla</th>
-                            <th style="width:  12%">Codigo logistica</th>
-                            <th style="width:  10%">Locker</th>
-                            <th style="width:  20%">ACTUALIZAR ESTADO</th>
+                            <th style="width: 5%;background-color:green; color:white;">ID</th>
+                            <th style="width: 15%;background-color:green; color:white;">Estado</th>
+                            <th style="width: 10%;background-color:green; color:white;">Pago</th>
+                            <th style="width: 10%;background-color:green; color:white;">Nombre </th>
+                            <th style="width:  8%;background-color:green; color:white;">Documento</th>
+                            <th style="width: 12%;background-color:green; color:white;">Fecha</th>
+                            <th style="width:  5%;background-color:green; color:white;">Taquilla</th>
+                            <th style="width:  12%;background-color:green; color:white;">Codigo logistica</th>
+                            <th style="width:  10%;background-color:green; color:white;">Locker</th>
+                            <th style="width:  20%;background-color:green; color:white;">ACTUALIZAR ESTADO</th>
                         </tr>
                     </thead>
 
@@ -58,24 +66,34 @@ require_once "../../php/sesion-admin.php";
                         <td><?php echo $mostrar['nombre_locker'] ?></td>
 
                         <td>
-                            <form action="../../php/cambiar-estado.php" method="POST" name="gestion_entrega" id="gestion_entrega">
+                            <form action="../../php/cambiar-estado.php" method="POST" name="gestion_entrega"
+                                id="gestion_entrega">
 
-<!-- 
+                                <!-- 
                                 <input type="submit" name="boton_1"   >
                                 <input type="submit" name="boton_2"  >
                                 <input type="submit" name="boton_3"  >
                                 <input type="submit" name="boton_4"  > -->
 
-                                <a href="../../php/cambiar-estado.php?Id=<?php echo $mostrar['Id']?>&correo=<?php echo $mostrar['correo']?>" id="estado_1" name="estado_1" type="submit"><i class="bi bi-check fs-5 px-2"
+                                <a href="../../php/cambiar-estado.php?Id=<?php echo $mostrar['Id']?>&correo=<?php echo $mostrar['correo']?>"
+                                    id="estado_1" name="estado_1" type="submit"><i class="bi bi-check fs-5 px-2"
                                         style="color: #F8AE22"></i></a>
 
-                                <a href="../../php/cambiar-estado.php?Id2=<?php echo $mostrar['Id']?>&correo1=<?php echo $mostrar['correo']?>" id="estado_2" name="estado_2"><i class="bi bi-check-all fs-5 px-2"
+                                <a href="../../php/cambiar-estado.php?Id2=<?php echo $mostrar['Id']?>&correo1=<?php echo $mostrar['correo']?>"
+                                    id="estado_2" name="estado_2"><i class="bi bi-check-all fs-5 px-2"
                                         style="color: #05A1D3"></i></a>
-                                <a href="../../php/cambiar-estado.php?Id3=<?php echo $mostrar['Id']?>&correo2=<?php echo $mostrar['correo']?>" id="estado_3" name="estado_3"> <i class="bi bi-check2-square fs-5 px-2"
+
+                                <a href="../../php/cambiar-estado.php?Id3=<?php echo $mostrar['Id']?>&correo2=<?php echo $mostrar['correo']?>&codigo_user=<?php echo $mostrar['codigo_entrega']?>"
+                                    id="estado_3" name="estado_3"> <i class="bi bi-check2-square fs-5 px-2"
                                         style="color: #da1111"></i></a>
-                                <a href="../../php/cambiar-estado.php?Id4=<?php echo $mostrar['Id']?>&correo3=<?php echo $mostrar['correo']?>&codigo_user=<?php echo $mostrar['codigo_entrega']?>" id="estado_4" name="estado_4"><i class="bi bi-check-square-fill fs-5 px-2"
+
+                                <a href="../../php/cambiar-estado.php?Id4=<?php echo $mostrar['Id']?>&correo3=<?php echo $mostrar['correo']?>"
+                                    id="estado_4" name="estado_4"><i class="bi bi-check-square-fill fs-5 px-2"
                                         style="color: green;"></i></a>
 
+                                <a href="../../php/cambiar-estado.php?Id5=<?php echo $mostrar['Id']?>&correo4=<?php echo $mostrar['correo']?>"
+                                    id="estado_5" name="estado_5"><i class="bi bi-bell-fill fs-5 px-2"
+                                        style="color: #F7BC25;"></i></a>
                             </form>
 
 

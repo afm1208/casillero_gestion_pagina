@@ -16,18 +16,20 @@ require_once "../../php/sesion-admin.php";
 
 </head>
 
-<body>
+<body style="background-color: beige;">
 
 	<?php require_once "../../template/navbar.php";
 	require_once "../../template/menu.php";
 	?>
 
-	<div class="btn btn blue" style="width:100%">
+<center>
+        <div class="text-warning" style="margin: 20px; background:green;width: 50%;">
+            <h1 class="display-4" style="color: beige;">Reporte Casillero</h1>
+        </div>
 
-	<button type="button" class="btn btn-warning" style="height:10%; width:30%; " >Hoy</button>
-	<button type="button" class="btn btn-info"   style="height:10%; width:30%; ">Ayer</button>
+    </center>
 
-	</div>
+	
 	<div class="mt-5 px-lg-2 px-sm-1">
 		<div class="row m-0">
 			<div class="col-lg-12">
@@ -35,18 +37,18 @@ require_once "../../php/sesion-admin.php";
                     
 					<thead>
 						<tr>
-							<th style="width: 5%"> ID </th>
-							<th style="width: 10%;">Nombre</th>
-							<th style="width: 5%">No Documento</th>
-							<th style="width: 10%">Estado</th>
-							<th style="width:  12%">Fecha Reserva</th>
-							<th style="width:  12%">Fecha Entrega</th>
-							<th style="width: 12%">Fecha Retirado</th>
-							<th style="width:  8%">Locker</th>
-							<th style="width:  5%">Taquilla</th>
-							<th style="width:  10%">Codigo Usuario</th>
-							<th style="width:  10%">Codigo Clean</th>
-							<th style="width:  15%">Observacion</th>
+							<th style="width: 5%;background-color:green; color:white;"> ID </th>
+							<th style="width: 10%;background-color:green; color:white;">Nombre</th>
+							<th style="width: 5%;background-color:green; color:white;">No Documento</th>
+							<th style="width: 10%;background-color:green; color:white;">Estado</th>
+							<th style="width:  10%;background-color:green; color:white;">Fecha Reserva</th>
+							<th style="width:  10%;background-color:green; color:white;">Fecha Entrega</th>
+							<th style="width: 10%;background-color:green; color:white;">Fecha Retirado</th>
+							<th style="width:  8%;background-color:green; color:white;">Locker</th>
+							<th style="width:  5%;background-color:green; color:white;">Taquilla</th>
+							<th style="width:  10%;background-color:green; color:white;">Codigo Cliente</th>
+							<th style="width:  10%;background-color:green; color:white;">Codigo Logistica</th>
+							<th style="width:  15%;background-color:green; color:white;">Observacion</th>
 						</tr>
 					</thead>
 
@@ -58,7 +60,7 @@ require_once "../../php/sesion-admin.php";
 					while ($mostrar = mysqli_fetch_array($result)) {
 					?>
 						<tr>
-							<td><?php echo $mostrar['Id'] ?></td>
+							<td ><?php echo $mostrar['Id'] ?></td>
 							<td><?php echo $mostrar['nombre_cliente'] ?></td>
 							<td><?php echo $mostrar['numdocumento'] ?></td>
 							<td><?php echo $mostrar['estado_locker'] ?></td>

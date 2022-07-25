@@ -19,11 +19,16 @@ $nombre=$porciones[0];// nombre
 $correo=$porciones[1];// correo
 
 
- // creamos la funcion para generar un token 
-$sql = "INSERT into	encomiendas (nombre_cliente,nombre_locker,taquilla,fecha_reserva,fecha_entregado,fecha_retirado,fecha_cancelado,observacion,codigo_entrega,codigo_clean,estado,pago)
-values ('$cliente','$locker','$taquillaid','$creado','$creado','$creado','$creado','$info','$codigo_entregable','$codigo_clean','$estado','$pago')";
+if (strlen($codigo_entregable) == 6 ){
+    $sql = "INSERT into	encomiendas (nombre_cliente,nombre_locker,taquilla,fecha_reserva,fecha_entregado,fecha_retirado,fecha_cancelado,observacion,codigo_entrega,codigo_clean,estado,pago)
+values ('$nombre','$locker','$taquillaid','$creado','$creado','$creado','$creado','$info','$codigo_entregable','$codigo_clean','$estado','$pago')";
  $result = mysqli_query($conexion, $sql);
  echo  + $codigo_clean;
+} else {
+    echo "<script> alert('Revisa que el codigo de crear reserva solo tenga 6 digitos');window.location.replace(document.referrer);
+						</script>";
+}
+
 
 
  use PHPMailer\PHPMailer\PHPMailer;
@@ -45,10 +50,10 @@ values ('$cliente','$locker','$taquillaid','$creado','$creado','$creado','$cread
  $mail->Password   = "Casille123+";
  
  $mail->IsHTML(true);
- $mail->AddAddress( $correo, "ventas BYS");
- $mail->SetFrom("reservas@casillerosinteligentes.com", 'Reservas');
- $mail->AddReplyTo($correo,'Lavanderia');
- $mail->Subject = 'Taquilla Reservada 🧦👘[Deposita tu ROPA en el Casillero]';
+ $mail->AddAddress( $correo, "Clean is god");
+ $mail->SetFrom("reservas@casillerosinteligentes.com", 'Clean is god');
+ $mail->AddReplyTo($correo,'Clean is god');
+ $mail->Subject = 'Taquilla Reservada [Deposita tu ROPA en el Casillero]';
  $content = '
  <!DOCTYPE html>
 <html lang="en">
@@ -250,6 +255,6 @@ values ('$cliente','$locker','$taquillaid','$creado','$creado','$creado','$cread
 
 
 
-// $sql = "UPDATE detalles_locker set estado_locker = '$reserva' WHERE  Id_Locker = '$Id' and num_taquilla = '$taquillaid' and tamano_locker = '$tamano' ";
+// $sql = "UPDATE detalles_locker set estado_locker = '$reserva' WHERE Id_Locker = '$Id' and num_taquilla =
+'$taquillaid' and tamano_locker = '$tamano' ";
 // echo $result = mysqli_query($conexion, $sql);
-  

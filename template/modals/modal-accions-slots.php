@@ -212,7 +212,7 @@
                                                <option value="Ninguno"></option>
                                                <?php foreach ($ejecutar as $opciones) : ?>
                                                <option
-                                                   value="<?php echo $opciones['nombre'] ?>&<?php echo $opciones['correo'] ?>">
+                                                   value="<?php echo $opciones['nombre'] ?> & <?php echo $opciones['correo'] ?>">
                                                    <?php echo $opciones['nombre'] ?>
                                                    <?php echo $opciones['numdocumento']?>
                                                </option>
@@ -273,7 +273,7 @@
                                                <input type="hidden" id="contrasena" name="contrasena" value="000000">
                                                <input type="hidden" id="ccontrasena" name="ccontrasena" value="000000">
                                                <input type="hidden" id="locker_registrado" name="locker_registrado"
-                                                   value="27">
+                                                   value="<?$_GET['ID']?>">
                                                <input type="hidden" id="idRol" name="idRol" value="2">
 
 
@@ -287,14 +287,14 @@
                                 
                                    <div class="form-check">
                                        <input class="form-check-input" type="radio" name="pago"
-                                           id="pago_realizado" value="pago realizado">
+                                           id="pago_realizado" value="PAGO">
                                        <label class="form-check-label" for="flexRadioDefault1">
                                            Pago realizado
                                        </label>
                                    </div>
                                    <div class="form-check">
                                        <input class="form-check-input" type="radio" name="pago"
-                                           id="pago_pendiente" value="pago">
+                                           id="pago_pendiente" value="PENDIENTE P">
                                        <label class="form-check-label" for="flexRadioDefault2">
                                            Pago pendiente
                                        </label>
@@ -312,6 +312,7 @@
                                    <p>Ingreser el token del usuario</p>
                                    <input type="text" name="codigo_prueba" id="codigo_prueba"
                                        placeholder="Ingrese token" value="" required>
+                                   
 
                                    <br><br><br>
 
@@ -324,7 +325,7 @@
 
                                    <input type="hidden" name="correo" value="<?$mostrar['correo']?>">
 
-                                   <input type="hidden" name="estado" value="ROPA RECIBIDA">
+                                   <input type="hidden" name="estado" value="RESRVA CREADA">
 
                                    <div class="col-lg-12 col-sm-6 col-12 text-center">
 

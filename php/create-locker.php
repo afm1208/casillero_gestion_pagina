@@ -35,6 +35,9 @@ if (buscaRepetido($locker, $codigo, $conexion) == 1) {
 }
 
 
+echo "<script> alert('Locker creado');window.location.replace(document.referrer);
+						</script>";
+
 
 
 function buscaRepetido($lock, $cod, $conexion)

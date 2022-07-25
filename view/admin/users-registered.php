@@ -14,12 +14,19 @@ require_once "../../php/sesion-admin.php";
 
 </head>
 
-<body>
+<body style="background-color: beige;">
 
 	<?php require_once "../../template/navbar.php";
 	require_once "../../template/menu.php";
 	?>
 
+
+<center>
+        <div class="text-warning" style="margin: 20px;background-color:green;width: 40%; ">
+            <h1 class="display-4" style="color: beige;">Usuarios Registrados</h1>
+        </div>
+
+    </center>
 
 	<div class="mt-5 px-lg-2 px-sm-1">
 		<div class="row m-0">
@@ -27,13 +34,13 @@ require_once "../../php/sesion-admin.php";
 				<table id="indexadmin" class="table table-hover table-locker" cellspacing="0" width="100%">
 					<thead>
 						<tr>
-							<th style="width: 15%">Nombre</th>
-							<th style="width: 15%">Documento</th>
-							<th style="width: 10%">Telefono</th>
-							<th style="width: 15%">Correo</th>
-							<th style="width: 5%">Rol</th>
-							<th style="width: 15%">Locker Registrado</th>
-							<th style="width: 20%">Acciones</th>
+							<th style="width: 15%;background-color:green; color:white;">Nombre</th>
+							<th style="width: 15%;background-color:green; color:white;">Documento</th>
+							<th style="width: 10%;background-color:green; color:white;">Telefono</th>
+							<th style="width: 15%;background-color:green; color:white;">Correo</th>
+							<th style="width: 5%;background-color:green; color:white;">Rol</th>
+							<th style="width: 15%;background-color:green; color:white;">Locker Registrado</th>
+							<th style="width: 20%;background-color:green; color:white;">Acciones</th>
 						</tr>
 					</thead>
 
@@ -43,7 +50,7 @@ require_once "../../php/sesion-admin.php";
 					?>
 						<tr>
 							<td><?php echo $mostrar['nombre'] ?></td>
-							<td><?php echo $mostrar['documento'] ?> # <?php echo $mostrar['numdocumento'] ?></td>
+							<td><?php echo $mostrar['numdocumento'] ?></td>
 							<td><?php echo $mostrar['telefono'] ?></td>
 							<td><?php echo $mostrar['correo'] ?></td>
 							<td><?php echo $mostrar['descripcion'] ?></td>

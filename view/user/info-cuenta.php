@@ -14,7 +14,7 @@
 
 </head>
 
-<body>
+<body style="background-color: beige;">
 
 	<?php require_once "../../template/navbar.php";
 	require_once "../../template/menu.php";
