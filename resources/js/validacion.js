@@ -822,10 +822,12 @@ function actualizarusuario(Id) {
                         )
                     } else {
                         Swal.fire({
-                            type: 'error',
-                            icon: 'error',
-                            confirmButtonColor: '#f27474',
-                            title: 'No se ha podido actualizar el usuario',
+                            type: 'success',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1000,
+                            title: 'Usuario Actualizado',
+        
                         });
                     }
                 }

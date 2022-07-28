@@ -10,7 +10,7 @@ require_once "../../php/locker-view.php";
 
 <head>
 	<meta charset="utf8_decode">
-	<title>Editar Usuario Admin</title>
+	<title>Casillero</title>
 
 	<?php require_once FOLDER_TEMPLATE . "head.php" ?>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
@@ -34,7 +34,8 @@ require_once "../../php/locker-view.php";
 
 		<div class="title-locker mt-4 mb-5">
 			<center>
-				<h1><?php echo $mostrar['nombre_locker'] ?> <a href="" class="text-decoration-none" title="Crear Encomienda" data-bs-toggle="modal" onclick="" onkeyup="" data-bs-target="#createparcel"><i class="bi bi-clipboard2-plus-fill" style="color:#057EC7"></i></a></h1>
+				<h1><?php echo $mostrar['nombre_locker'] ?> </h1>
+				<a href="" class="text-decoration-none" title="Crear Encomienda" data-bs-toggle="modal" onclick="" onkeyup="" data-bs-target="#createparcel"><i class="btn btn-primary -fill fs-4" style="color:beige;margin:20px;"> CREAR SERVICIO</i></a>
 			</center>
 		</div>
 		<div class="all-locker">
@@ -57,7 +58,7 @@ require_once "../../php/locker-view.php";
 								<?php } else if ($mostrar['estado_locker'] == 'Bloqueado') { ?>
 									<div class="taquilla-bloqued">
 									<?php
-								} else if ($mostrar['estado_locker'] == 'Reservado') { ?>
+								} else if ($mostrar['estado_locker'] == 'Depositado') { ?>
 										<div class="taquilla-reserved">
 										<?php
 									}
@@ -93,7 +94,7 @@ require_once "../../php/locker-view.php";
 													</div>
 													<div class="col-lg-12 "><i class="bi bi-exclamation-diamond-fill" style="font-size:15px"></i>
 														<p><?php echo (utf8_encode($mostrar['estado_locker'])) ?></p>
-													</div> 
+													</div>
 													</div>
 
 												</div>
@@ -119,48 +120,45 @@ require_once "../../php/locker-view.php";
 			</div>
 		</div>
 		<script>
-			
+			function crear_codigo_usuario() {
+				var codigo_entrega = document.getElementById('codigo_entrega');
+				if (strlen(codigo_entrega) == 6) {
+					var codigo_empresa = random_int(111111, 999999);
+					return codigo_empresa;
+				}
+			}
 
+			function recoger_ropa(codigo_empresa) {
+				var vida_code_user = 1;
+				var vida_code_empresa = 2;
+				var puerta = false;
+				if (strlen(codigo_empresa) == 6) {
+					do {
+						vida_code_empresa = vida_code_empresa - 1;
+						puerta = true;
+					} while (vida_code_empresa == 2);
+				}
+			}
 
-	function crear_codigo_usuario(){
-		var codigo_entrega = document.getElementById('codigo_entrega');
-		if (strlen(codigo_entrega) == 6){
-		 	var codigo_empresa = random_int(111111,999999);
-			 return codigo_empresa;
-		}
-	}
+			function dejar_ropa(codigo_empresa) {
+				if (vida_code_empresa == 1) {
+					do {
+						vida_code_empresa = vida_code_empresa - 1;
+						puerta = true;
+					} while (vida_code_empresa == 1);
+				}
+			}
 
-	function recoger_ropa (codigo_empresa){
-		var vida_code_user = 1;
-		var vida_code_empresa = 2;
-		var puerta = false;
-		if (strlen(codigo_empresa) == 6){
-          do {
-			vida_code_empresa = vida_code_empresa - 1;
-			puerta = true;
-		} while(vida_code_empresa == 2);
-		}
-	}
+			function terminar(codigo_entrega) {
+				if (vida_code_empresa == 0) {
+					if (vida_code_user == 1) {
+						do {
+							vida_code_user = vida_code_user - 1;
+						} while (vida_code_user == 1);
+					}
+				}
 
-	function dejar_ropa(codigo_empresa){
-		if (vida_code_empresa == 1){
-         do{
-           vida_code_empresa = vida_code_empresa - 1;
-		   puerta = true;
-		 } while(vida_code_empresa == 1);
-		}
-	}
-
-	function terminar (codigo_entrega){
-		if (vida_code_empresa == 0){
-			if (vida_code_user == 1){
-		do{
-          vida_code_user = vida_code_user - 1;
-		}while(vida_code_user == 1);
-     } 
-		}
-  
-	}
+			}
 			var tamanogrande = {
 				//solución, material y tiempo
 				"1": ["GRABDE", "<?php echo $mostrarag['num_taquilla']; ?> "],

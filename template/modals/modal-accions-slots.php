@@ -24,12 +24,18 @@
                                             if ($mostrar['estado_locker'] == "Disponible") { ?>
                                            <option value="Disponible">Disponible</option>
                                            <option value="Bloqueado">Bloqueado</option>
+                                           <option value="Depositado">Depositado</option>
                                            <?php
                                             } else   if ($mostrar['estado_locker'] == "Bloqueado") { ?>
                                            <option value="Bloqueado">Bloqueado</option>
                                            <option value="Disponible">Disponible</option>
+                                           <option value="Depositado">Depositado</option>
                                            <?php
-                                            } ?>
+                                            } else   if ($mostrar['estado_locker'] == "Depositado") { ?>
+                                           <option value="Depositado">Depositado</option>
+                                           <option value="Disponible">Disponible</option>
+                                           <option value="Bloqueado">Bloqueado</option>
+                                           <?php } ?>
                                        </select>
                                    </div>
                                    <label>Tamaño</label>
@@ -95,7 +101,7 @@
            <div class="modal-content">
                <div class="modal-header">
 
-                   <h5 class="modal-title" id="1"> Crear Encomienda </h5>
+                   <h5 class="modal-title" id="1"> Crear Servicio </h5>
                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
                <div class="modal-body">
@@ -103,17 +109,17 @@
                        <form id="frmcreateparcel" name="frmcreateparcel" class="form"
                            action="../../php/insert-parcel.php" method="POST">
                            <div class="container">
-                               <p>Cantidad total de lockers disponibles: <b><?php echo utf8_encode($mostrarpd['num']) ?>
+                               <p>Total Taquillas:<b><?php echo utf8_encode($mostrar_num_slots['num']) ?></b></p>
+                               <p> Taquillas Disponibles: <b><?php echo utf8_encode($mostrarpd['num']) ?>
                                    </b></p>
                                <br />
-                               <p>Seleccione el tamaño del locker para su encomienda: </p>
+                               <p>Seleccionar tamaño: </p>
                                <div class="my-5">
                                    <form id="frmvalidatelocker" name="frmvalidatelocker" class="form"
                                        action="../../php/insert-parcel.php" method="POST">
                                        <div id="slots">
                                            <div class="row">
                                                <div class="slots-available  col-lg-12 mb-2 rounded-3">
-
 
                                                    <?php if ($mostrarpg['num'] == Null) { ?>
                                                    <input type="radio" id="tamanogrande" name="tamanoslot"
@@ -123,21 +129,20 @@
 
                                                     } else {
                                                     ?>
-
-
-
                                                    <input type="radio" id="tamanogrande" name="tamanoslot"
                                                        onchange='cambioOpciones1();' value="1" class="btn-check">
                                                    <?php
                                                     } ?>
 
                                                    <label class="btn btn-outline-primary" for="tamanogrande"> Grande
-                                                       (<?php if ($mostrarpg['num'] == Null) {
-                                                                                                                            echo "0";
-                                                                                                                        } else {
-                                                                                                                            echo utf8_encode($mostrarpg['num']);
-                                                                                                                        } ?>)</label><br>
+                                                       (<?php if ($mostrarpg['num'] == Null) {  echo "0";
+                                              } else {
+                                                     echo utf8_encode($mostrarpg['num']);
+                                                             } ?>)</label><br>
                                                </div>
+
+
+
                                                <div class="slots-available  col-lg-7 mb-2 rounded-3">
 
                                                    <?php if ($mostrarpm['num'] == Null) { ?>
@@ -152,11 +157,16 @@
                                                     } ?>
                                                    <label class="btn btn-outline-primary" for="tamanomediano"> Mediano
                                                        (<?php if ($mostrarpm['num'] == Null) {
-                                                                                                                            echo "0";
-                                                                                                                        } else {
-                                                                                                                            echo utf8_encode($mostrarpm['num']);
-                                                                                                                        } ?>)</label><br>
+                                                   echo "0";
+                                                } else {
+                                                 echo utf8_encode($mostrarpm['num']);
+                                                 } ?>)</label><br>
                                                </div>
+
+
+
+
+
                                                <div class="slots-available  col-lg-5 mb-2 rounded-3">
                                                    <?php if ($mostrarpp['num'] == Null) { ?>
                                                    <input type="radio" id="tamanopequeno" name="tamanoslot"
@@ -173,10 +183,10 @@
 
                                                    <label class="btn btn-outline-primary" for="tamanopequeno"> Pequeño
                                                        (<?php if ($mostrarpp['num'] == Null) {
-                                                                                                                            echo "0";
-                                                                                                                        } else {
-                                                                                                                            echo utf8_encode($mostrarpp['num']);
-                                                                                                                        } ?>)</label><br>
+                                                                             echo "0";
+                                                                } else {
+                                                        echo utf8_encode($mostrarpp['num']);
+                                                          } ?>)</label><br>
                                                </div>
                                            </div>
                                            <!-- <input id="tamano-slot" type="text">
@@ -189,6 +199,8 @@
                                                <input type="text" aria-label="Last name" class="form-control"
                                                    id="taquilla-id" name="taquilla-id">
                                            </div>
+
+
                                        </div>
                                    </form>
                                </div>
@@ -200,19 +212,20 @@
                                    <div class="container">
                                        <div class="row-fluid">
 
-                                           <select class="selectpicker"  data-show-subtext="true" data-live-search="true"
-                                               name="nombre-cliente" id="nombre-cliente" onchange="changeStatus()"
-                                               required>
+                                           <select class="form-select form-select-lg mb-3" data-show-subtext="true"
+                                               data-live-search="true" name="nombre-cliente" id="nombre-cliente"
+                                               onchange="changeStatus()" "
+                                               required >
+
 
                                                <?php
                                                 $consulta = "SELECT * FROM registro_usuarios";
                                                 $ejecutar = mysqli_query($conexion, $consulta);
                                                 ?>
-
-                                               <option value="Ninguno"></option>
+                                               <option selected style=" width:80%;">Usuarios</option>
                                                <?php foreach ($ejecutar as $opciones) : ?>
                                                <option
-                                                   value="<?php echo $opciones['nombre'] ?> & <?php echo $opciones['correo'] ?>">
+                                                   value="<?php echo $opciones['nombre'] ?>&<?php echo $opciones['correo'] ?> ">
                                                    <?php echo $opciones['nombre'] ?>
                                                    <?php echo $opciones['numdocumento']?>
                                                </option>
@@ -227,19 +240,23 @@
                                    <br>
                                    <br>
 
-                                   <p>
+                                   <div class="col-lg-12 col-sm-6 col-12 text-center">
 
                                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
                                            data-bs-target="#form-new-user" aria-expanded="false"
-                                           aria-controls="form-new-user" name="boton-crear-user" id="boton-crear-user">
+                                           aria-controls="form-new-user" name="boton-crear-user" id="boton-crear-user"
+                                           style="margin-left: 0px;">
                                            Nuevo usuario
                                        </button>
-                                   </p>
+
+                                   </div>
+
+
 
                                    <div class="collapse" id="form-new-user">
                                        <div class="card card-body">
                                            <form name="formulario-new-user-encomienda" method="POST"
-                                               action="../../php/registro-usuario.php">
+                                               action="../../php/registro-usuario.php" id="formulario-new-user-encomienda">
                                                <div class="mb-3">
                                                    <label for="name-new-user" class="form-label">Nombre y
                                                        apeliido</label>
@@ -262,6 +279,26 @@
                                                    <input type="email" class="form-control" id="correo" name="correo"
                                                        placeholder="Email">
                                                </div>
+                                               <select class="form-select form-select-lg mb-3"
+                                                   aria-label="Default select example" style="border-radius: 60px; "
+                                                   data-show-subtext="true" data-live-search="true"
+                                                   id="locker_registrado" name="locker_registrado">
+                                                   <option selected>Casilleros</option>
+                                                   <?php
+                                                $consulta = "SELECT * FROM casilleros";
+                                                $ejecutar = mysqli_query($conexion, $consulta);
+                                                ?>
+
+                                                   <?php foreach ($ejecutar as $opciones) : ?>
+                                                   <option style="border-radius: 60px;"
+                                                       value="<?php echo $opciones['Id'] ?> ">
+                                                       <?php echo $opciones['Id'] ?> :
+                                                       <?php echo $opciones['locker']?> :
+                                                       <?php echo $opciones['referencia']?>
+                                                   </option>
+                                                   <?php endforeach ?>
+                                               </select>
+
                                                <div class="links row mt-2">
                                                    <div class="col-lg-12 col-md-12 mt-3 text-center">
                                                        <input type="radio" name="tyc" id="tyc" value="si" required>
@@ -270,39 +307,30 @@
                                                </div>
 
                                                <input type="hidden" id="documento" name="documento" value="Cedula">
-                                               <input type="hidden" id="contrasena" name="contrasena" value="000000">
-                                               <input type="hidden" id="ccontrasena" name="ccontrasena" value="000000">
+
                                                <input type="hidden" id="locker_registrado" name="locker_registrado"
-                                                   value="<?$_GET['ID']?>">
+                                                   value="27">
+
+
+
+                                               <input type="hidden" id="fecha_creacion" name="fecha_creacion" value="">
                                                <input type="hidden" id="idRol" name="idRol" value="2">
 
 
+                                               <div class="col-lg-12 col-sm-6 col-12 text-center" style="margin: 20px;margin-right: 10px;">
+                                                   <input type="submit" class="btn btn-primary" value="Crear Usuario"
+                                                       name="registrarNuevo" data-bs-toggle="modal"
+                                                       data-bs-target="#modal-confirmed" style="width: 50%; ">
+                                               </div>
 
-                                               <input type="submit" class="btn btn-primary" value="Crear Usuario"
-                                                   name="registrarNuevo" data-bs-toggle="modal"
-                                                   data-bs-target="#modal-confirmed">
                                            </form>
                                        </div>
                                    </div>
-                                
-                                   <div class="form-check">
-                                       <input class="form-check-input" type="radio" name="pago"
-                                           id="pago_realizado" value="PAGO">
-                                       <label class="form-check-label" for="flexRadioDefault1">
-                                           Pago realizado
-                                       </label>
-                                   </div>
-                                   <div class="form-check">
-                                       <input class="form-check-input" type="radio" name="pago"
-                                           id="pago_pendiente" value="PENDIENTE P">
-                                       <label class="form-check-label" for="flexRadioDefault2">
-                                           Pago pendiente
-                                       </label>
-                                   </div>
 
 
 
-                                   <label class="mb-2 mt-4">Información Adicional</label>
+
+                                   <label class="mb-2 mt-4" >Información Adicional</label>
 
                                    <div class="form-sesion w-100 mb-5">
                                        <textarea class="w-100 rounded p-2" value="" name="info" id="info" cols="10"
@@ -312,7 +340,7 @@
                                    <p>Ingreser el token del usuario</p>
                                    <input type="text" name="codigo_prueba" id="codigo_prueba"
                                        placeholder="Ingrese token" value="" required>
-                                   
+
 
                                    <br><br><br>
 
@@ -325,11 +353,13 @@
 
                                    <input type="hidden" name="correo" value="<?$mostrar['correo']?>">
 
-                                   <input type="hidden" name="estado" value="RESRVA CREADA">
+                                   <input type="hidden" name="estado" value="RESERVA CREADA">
 
                                    <div class="col-lg-12 col-sm-6 col-12 text-center">
 
-                                       <button id="createparcel" class="btn-blue">Guardar</button>
+                                       <button class="btn btn-primary"
+                                           style="margin: 20px;width: 50%;height:70%;border-radius: 60px"
+                                           id="createparcel" class="btn-blue">Crear Servicio</button>
                                    </div>
                                </div>
                            </div>
@@ -352,8 +382,8 @@
        <div class="modal-dialog" role="document">
            <div class="modal-content">
                <div class="modal-header">
-                   <h5 class="modal-title" id="Historial_taquillas"> HISTORIAL TAQUILLA
-                       <?php echo $mostrar['num_taquilla']; ?> </h5>
+                   <h5 class="modal-title" id="Historial_taquillas"> <b> HISTORIAL TAQUILLA: <?php echo $mostrar['num_taquilla']; ?> </b> </h5>
+                        
 
                </div>
                <div class="modal-body">
@@ -419,8 +449,7 @@
                    </div>
                </div>
                <div class="modal-footer">
-                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
+               <button type="button" class="btn btn-secondary" style="background-color: red;" data-bs-dismiss="modal">Close</button>
                </div>
            </div>
        </div>

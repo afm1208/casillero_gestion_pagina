@@ -22,9 +22,23 @@ $mostrar = $resultado->fetch_assoc();
 // $histoial ->execute();
 // $resultado_historial -> fetchAll();
 
+$sqlestado = "SELECT a.estado_locker  AS num FROM detalles_locker AS a  WHERE a.Id_Locker = '$Id'  GROUP BY a.estado_locker";
+$resultadoestado = $conexion->query($sqlestado);
+$mostrarestado = $resultadoestado->fetch_assoc();
+
+
+$sql_num_slots = "SELECT a.slots AS num FROM casilleros AS a WHERE a.Id = '$Id' GROUP BY a.Id";
+$result = $conexion->query($sql_num_slots);
+$mostrar_num_slots = $result->fetch_assoc();
+
+
+
+
 $sqlparceld = "SELECT a.estado_locker , COUNT(*) AS num FROM detalles_locker AS a  WHERE a.Id_Locker = '$Id' and a.estado_locker = 'Disponible' GROUP BY a.estado_locker";
 $resultadopd = $conexion->query($sqlparceld);
 $mostrarpd = $resultadopd->fetch_assoc();
+
+
 
 $sqlparcelg = "SELECT a.tamano_locker , COUNT(*) AS num FROM detalles_locker AS a  WHERE a.Id_Locker = '$Id' and a.tamano_locker = 'Grande' and a.estado_locker = 'Disponible' GROUP BY a.tamano_locker";
 $resultadopg = $conexion->query($sqlparcelg);

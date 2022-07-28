@@ -2,7 +2,7 @@
 require_once "conexion.php";
 $conexion = conexion();
 
-$pago = $_POST['pago'];
+
 $estado = $_POST['estado'];
 $tamano = $_POST['tamanoslot'];
 $cliente = $_POST['nombre-cliente'];
@@ -19,24 +19,20 @@ $nombre=$porciones[0];// nombre
 $correo=$porciones[1];// correo
 
 
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require '../SMTP/PHPMailer/Exception.php';
+require '../SMTP/PHPMailer/PHPMailer.php';
+require '../SMTP/PHPMailer/SMTP.php';
+
+
 if (strlen($codigo_entregable) == 6 ){
-    $sql = "INSERT into	encomiendas (nombre_cliente,nombre_locker,taquilla,fecha_reserva,fecha_entregado,fecha_retirado,fecha_cancelado,observacion,codigo_entrega,codigo_clean,estado,pago)
-values ('$nombre','$locker','$taquillaid','$creado','$creado','$creado','$creado','$info','$codigo_entregable','$codigo_clean','$estado','$pago')";
+    
+    $sql = "INSERT into	encomiendas (nombre_cliente,nombre_locker,taquilla,fecha_reserva,fecha_entregado,fecha_retirado,fecha_cancelado,observacion,codigo_entrega,codigo_clean,estado)
+values ('$nombre','$locker','$taquillaid','$creado','$creado','$creado','$creado','$info','$codigo_entregable','$codigo_clean','$estado')";
+
  $result = mysqli_query($conexion, $sql);
- echo  + $codigo_clean;
-} else {
-    echo "<script> alert('Revisa que el codigo de crear reserva solo tenga 6 digitos');window.location.replace(document.referrer);
-						</script>";
-}
-
-
-
- use PHPMailer\PHPMailer\PHPMailer;
- use PHPMailer\PHPMailer\Exception;
- require '../SMTP/PHPMailer/Exception.php';
- require '../SMTP/PHPMailer/PHPMailer.php';
- require '../SMTP/PHPMailer/SMTP.php';
- 
  $mail = new PHPMailer();
  $mail->IsSMTP();
  $mail->Mailer = "smtp";
@@ -239,15 +235,23 @@ values ('$nombre','$locker','$taquillaid','$creado','$creado','$creado','$creado
  $mail->MsgHTML($content); 
  if(!$mail->Send()) { 
   echo "<meta http-equiv=\"refresh\" content=\"0;URL=Algo-salio-mal.html\">";
-   var_dump($mail);
+   
  } else {
-   echo "<meta http-equiv=\"refresh\" content=\"0;URL=Agradecimiento.html\">";
+    echo "<meta http-equiv=\"refresh\" content=\"0;URL=Agradecimiento.html\">";
+    echo "<script> alert('ENCOMIENDA CREADA EXITOSAMENTE!');window.location.replace(document.referrer);
+    </script>";
+   
  }
 
- 
- echo "<script> alert('ENCOMIENDA CREADA EXITOSAMENTE!');window.location.replace(document.referrer);
-						</script>";
 
+} else {
+    echo "<script> alert('Revisa que el codigo de crear reserva solo tenga 6 digitos');window.location.replace(document.referrer);
+						</script>";
+}
+
+
+
+ 
  
  ?>
 

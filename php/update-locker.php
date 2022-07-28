@@ -18,12 +18,12 @@ $tipo = $_POST['uptipo'];
 $codigo = $_POST['upcodigo'];
 $creado = $_POST['upcreado'];
 $actualizado = $_POST['upactualizado'];
-$id = $_GET['id'];
+ $id = $_POST['Id'];
 
 
 
 
-if (buscaRepetido($locker, $id, $conexion) == 1) {
+if (buscaRepetido( $id, $conexion) == 0) {
     echo 2;
 } else {
 
@@ -40,9 +40,9 @@ echo "<script> alert('Locker actualizado');window.location.replace(document.refe
 }
 
 
-function buscaRepetido($lock, $id, $conexion)
+function buscaRepetido( $id, $conexion)
 {
-    $sql = "SELECT * from casilleros WHERE locker = '$lock' and Id<>'$id'";
+    $sql = "SELECT * from casilleros WHERE Id<>'$id'";
     $result = mysqli_query($conexion, $sql);
 
     if (mysqli_num_rows($result) > 0) {

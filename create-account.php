@@ -56,6 +56,7 @@
 						</div>
 						<div class="col-lg-12">
 							<input type="hidden" name="idRol" id="idRol" value="2">
+							
 						</div>
 					</div>
 					<div class="links row mt-2">
@@ -65,8 +66,10 @@
 					</div>
 					<div class="col-lg-12 text-center">
 						
-						<input type="submit" class="form-control" value="registrarNuevo" name="registrarNuevo"   data-bs-toggle="modal" data-bs-target="#modal-confirmed" >
+						<input type="submit" class="form-control" value="registrarNuevo" name="registrarNuevo" style="text-align: center;"  data-bs-toggle="modal" data-bs-target="#modal-confirmed" >
 					</div>
+
+					
 
 				</form>
 				<div class="links row mt-2">

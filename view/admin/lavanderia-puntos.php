@@ -7,7 +7,7 @@ require_once "../../php/sesion-admin.php";
 <html>
 
 <head>
-    <title>Exportar Reporte</title>
+    <title>Fidelizacion Premios</title>
 
     <?php require_once FOLDER_TEMPLATE . "head.php";
 	require_once FOLDER_TEMPLATE . "tables.php" ?>
@@ -21,7 +21,7 @@ require_once "../../php/sesion-admin.php";
 	?>
     <center>
         <div class="text-warning" style="margin: 20px; background:green;width: 50%;">
-            <h1 class="display-4" style="color: beige;">Lavada Gratis</h1>
+            <h1 class="display-4" style="color: beige;">Fidelizacion-Premios</h1>
         </div>
 
     </center>
@@ -35,12 +35,12 @@ require_once "../../php/sesion-admin.php";
 
                     <thead>
                         <tr>
-                            <th style="width: 15%;background-color:green; color:white;">Id</th>
+                           
                             <th style="width: 15%;background-color:green; color:white;">Nombre</th>
                             <th style="width: 15%;background-color:green; color:white;">No.Documento</th>
                             <th style="width: 15%;background-color:green; color:white;">Telefono</th>
-                            <th style="width: 15%;background-color:green; color:white;">Correo</th>
-                            <th style="width: 15%;background-color:green; color:white;">Num_lavadas</th>
+                            <th style="width: 15%;background-color:green; color:white;text-align: left">Correo</th>
+                            <th style="width: 15%;background-color:green; color:white;">Cant. Servcicios</th>
                             <th style="width: 15%;background-color:green; color:white;">Notificar premio</th>
                         </tr>
                     </thead>
@@ -48,20 +48,25 @@ require_once "../../php/sesion-admin.php";
                     <?php require_once "../../php/mostrar-tabla.php";
 					$result = mysqli_query($conexion,$sql_puntaje_clean);
 					while ($mostrar = mysqli_fetch_array($result)) {
+                        $contador =0;
+
+                        $contador  =$contador +1;
+
+                        
                         if($mostrar['num_encomiendas'] == 10){
-                            
+                        
                         
 					?>
 
 
-                    <tr style="background-color: blue;">
-                        <td style="background-color: blue;color:white;"><?php echo $mostrar['id'] ?></td>
-                        <td style="background-color: blue;color:white;"><?php echo $mostrar['nombre_cliente'] ?></td>
-                        <td  style="background-color: blue;color:white;"><?php echo $mostrar['numdocumento'] ?></td>
-                        <td  style="background-color: blue;color:white;"><?php echo $mostrar['telefono'] ?></td>
-                        <td  style="background-color: blue;color:white;"><?php echo $mostrar['correo'] ?></td>
-                        <td  style="background-color: blue;color:white;"><?php echo $mostrar['num_encomiendas'] ?></td>
-                        <td style="background-color: blue;color:white;">
+                    <tr style="background-color: #DEFEE4;">
+                      
+                        <td style="background-color: #DEFEE4;color:white;color:black"><?php echo $mostrar['nombre_cliente'] ?></td>
+                        <td style="background-color: #DEFEE4;color:white;color:black"><?php echo $mostrar['numdocumento'] ?></td>
+                        <td style="background-color: #DEFEE4;color:white;color:black"><?php echo $mostrar['telefono'] ?></td>
+                        <td style="background-color: #DEFEE4;color:white;color:black"><?php echo $mostrar['correo'] ?></td>
+                        <td style="background-color: #DEFEE4;color:white;color:black"><?php echo $mostrar['num_encomiendas'] ?></td>
+                        <td style="background-color: #DEFEE4;color:white;color:black">
                             <form action="../../php/enviar-regalo.php" method="POST" name="gestion_entrega"
                                 id="gestion_entrega">
 
@@ -78,13 +83,15 @@ require_once "../../php/sesion-admin.php";
                     <!--Ventana Modal para Actualizar--->
                     <?php include('../../template/modals/modal-accions-users.php'); ?>
                     <?php
-                        } else {  ?>
+                        } else {  
+                            $contador = $contador + 1;
+                            ?>
                     <tr>
-                        <td><?php echo $mostrar['id'] ?></td>
-                        <td><?php echo $mostrar['nombre_cliente'] ?></td>
+                  
+                        <td style="text-align: left;"><?php echo $mostrar['nombre_cliente']  ?></td>
                         <td><?php echo $mostrar['numdocumento'] ?></td>
                         <td><?php echo $mostrar['telefono'] ?></td>
-                        <td><?php echo $mostrar['correo'] ?></td>
+                        <td style="text-align: left;"><?php echo $mostrar['correo'] ?></td>
                         <td><?php echo $mostrar['num_encomiendas'] ?></td>
                         <td>
                             <form action="../../php/enviar-regalo.php" method="POST" name="gestion_entrega"

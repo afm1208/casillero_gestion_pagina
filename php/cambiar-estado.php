@@ -12,10 +12,6 @@ require '../SMTP/PHPMailer/SMTP.php';
 
 
 
-
-
-
-
 if($_GET['Id']){ 
   $ID =$_GET['Id'];
   $correo = $_GET['correo'];

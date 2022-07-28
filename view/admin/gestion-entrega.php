@@ -1,16 +1,21 @@
 <?php require_once "../../config.php";
 
 require_once "../../php/sesion-admin.php";
+
+
+
 ?>
+
 
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Exportar Reporte</title>
+    <title>Gestion Entrega</title>
 
     <?php require_once FOLDER_TEMPLATE . "head.php";
-	require_once FOLDER_TEMPLATE . "tables.php" ?>
+	require_once FOLDER_TEMPLATE . "tables.php" ;
+?>
 
 </head>
 
@@ -18,10 +23,11 @@ require_once "../../php/sesion-admin.php";
 
     <?php require_once "../../template/navbar.php";
 	require_once "../../template/menu.php";
-	?>
+
+?>
 
 
-<center>
+    <center>
         <div class="text-warning" style="margin: 20px;background-color:green;width: 50%; ">
             <h1 class="display-4" style="color: beige;">Gestion Entrega</h1>
         </div>
@@ -29,23 +35,25 @@ require_once "../../php/sesion-admin.php";
     </center>
 
 
-    <div class="mt-5 px-lg-2 px-sm-1" >
+    <div class="mt-5 px-lg-2 px-sm-1">
         <div class="row m-0">
             <div class="col-lg-12">
                 <table id="indexadmin" class="table table-hover table-locker" cellspacing="0" width="100%">
 
                     <thead>
                         <tr>
-                            <th style="width: 5%;background-color:green; color:white;">ID</th>
-                            <th style="width: 15%;background-color:green; color:white;">Estado</th>
-                            <th style="width: 10%;background-color:green; color:white;">Pago</th>
-                            <th style="width: 10%;background-color:green; color:white;">Nombre </th>
-                            <th style="width:  8%;background-color:green; color:white;">Documento</th>
-                            <th style="width: 12%;background-color:green; color:white;">Fecha</th>
-                            <th style="width:  5%;background-color:green; color:white;">Taquilla</th>
-                            <th style="width:  12%;background-color:green; color:white;">Codigo logistica</th>
-                            <th style="width:  10%;background-color:green; color:white;">Locker</th>
+                            <th style="width: 5%;background-color:green; color:white;">N°Servicio</th>
+                            <th style="width: 8%;background-color:green; color:white;text-align: left">Nombre </th>
+                            <th style="width:  8%;background-color:green; color:white;">ID Usuario</th>
+                            <th style="width: 10%;background-color:green; color:white;">F.Apertura User</th>
+                            <th style="width:  10%;background-color:green; color:white;">Codigo logistica</th>
+                            <th style="width:  10%;background-color:green; color:white;">Sucursal</th>
+                            <th style="width:  10%;background-color:green; color:white;">Referencia</th>
+
+
                             <th style="width:  20%;background-color:green; color:white;">ACTUALIZAR ESTADO</th>
+                            <th style="width: 10%;background-color:green; color:white;text-align: left">Estado</th>
+
                         </tr>
                     </thead>
 
@@ -56,14 +64,12 @@ require_once "../../php/sesion-admin.php";
 
                     <tr>
                         <td><?php echo $mostrar['Id'] ?></td>
-                        <td><?php echo $mostrar['estado'] ?></td>
-                        <td><?php echo $mostrar['pago'] ?></td>
-                        <td><?php echo $mostrar['nombre'] ?></td>
+                        <td style="text-align: left;"><?php echo $mostrar['nombre'] ?></td>
                         <td><?php echo $mostrar['numdocumento'] ?></td>
                         <td><?php echo $mostrar['fecha_entregado'] ?></td>
-                        <td><?php echo $mostrar['taquilla'] ?></td>
                         <td><?php echo $mostrar['codigo_clean'] ?></td>
                         <td><?php echo $mostrar['nombre_locker'] ?></td>
+                        <td><?php echo $mostrar['referencia'] ?></td>
 
                         <td>
                             <form action="../../php/cambiar-estado.php" method="POST" name="gestion_entrega"
@@ -98,6 +104,11 @@ require_once "../../php/sesion-admin.php";
 
 
                         </td>
+                        <td style="text-align: left;"><?php echo $mostrar['estado'] ?></td>
+
+
+
+
 
                     </tr>
 
@@ -111,7 +122,13 @@ require_once "../../php/sesion-admin.php";
             </div>
         </div>
     </div>
-
+    <center>
+        <div class="container" style="margin:30px ">
+            <!-- <a href="" data-bs-toggle="modal" data-bs-target="#createlocker" style="margin: 10px;"><i class="bi bi-plus-circle-fill fs-1"> </i></a> -->
+            <a href="" data-bs-toggle="modal" data-bs-target="#" style="margin: 3px; margin-top:2px"
+                class="btn btn-primary -fill fs-4">Exportar pdf</a>
+        </div>
+    </center>
 
 
     <?php require_once FOLDER_TEMPLATE . "scripts.php"; ?>

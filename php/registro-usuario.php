@@ -16,6 +16,9 @@ $conexion = conexion();
   $locker_registrado = $_POST['locker_registrado'];
   $idRol = $_POST['idRol'];
   $tyc = $_POST['tyc'];
+ 
+  
+  
 
 
 

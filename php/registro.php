@@ -1,7 +1,5 @@
 <?php
 
-use LDAP\Result;
-
 require_once "conexion.php";
 $conexion = conexion();
 
@@ -16,11 +14,12 @@ $conexion = conexion();
   $locker_registrado = $_POST['locker_registrado'];
   $idRol = $_POST['idRol'];
   $tyc = $_POST['tyc'];
+  $fecha_creacion = $_POST['time_date']; 
 
 
 
- 	$sql = "INSERT into registro_usuarios (nombre,documento,numdocumento,telefono,correo,contrasena,ccontrasena,locker_registrado,idRol,tyc)
-				values ('$nombre','$documento','$numdocumento','$telefono','$correo','$contrasena','$ccontrasena','$locker_registrado','$idRol','$tyc')";
+ 	$sql = "INSERT into registro_usuarios (nombre,fecha_creacion,documento,numdocumento,telefono,correo,contrasena,ccontrasena,locker_registrado,idRol,tyc)
+				values ('$nombre',$fecha_creacion,'$documento','$numdocumento','$telefono','$correo','$contrasena','$ccontrasena','$locker_registrado','$idRol','$tyc')";
 	 $result = mysqli_query($conexion, $sql);
 
 

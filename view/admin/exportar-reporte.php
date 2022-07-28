@@ -9,7 +9,7 @@ require_once "../../php/sesion-admin.php";
 <html>
 
 <head>
-	<title>Exportar Reporte</title>
+	<title>Reporte Casillero</title>
 
 	<?php require_once FOLDER_TEMPLATE . "head.php";
 	require_once FOLDER_TEMPLATE . "tables.php" ?>
